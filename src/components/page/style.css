@@ -1,0 +1,37 @@
+
+p{
+    color: #40514E;
+    line-height: 2;
+}
+
+
+
+.skill-row{
+    width: 50%;
+    margin: 6.25rem auto;
+    text-align: left;
+}
+
+.profile-image{
+    border-radius: 100%;
+    width: 25%;
+}
+
+
+.coding-image{
+    width: 25%;
+    float: left;
+    margin-right: 1.875rem;
+}
+
+
+
+.intro{
+    width: 30%;
+    margin: auto;
+}
+
+.contact__message{
+    width: 40%;
+    margin: 2.5rem auto 3.75rem;
+}
