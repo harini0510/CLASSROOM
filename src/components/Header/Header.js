@@ -1,13 +1,11 @@
 import {
   AppBar,
   Avatar, Button,
-  Menu,
-  MenuItem,
   Toolbar,
   Typography,
 } from "@material-ui/core";
-import { Add } from "@material-ui/icons";
-import React from "react";
+
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { CreateClass, JoinClass } from "..";
 import { useLocalContext } from "../../context/context";
@@ -29,11 +27,11 @@ const Header = ({ children }) => {
     loggedInUser,
     logoutUser,
   } = useLocalContext();
-
-  const handleCreate = () => {
+ 
+    function handleCreate() {
     handleClose();
     setCreateClassDialog(true);
-  };
+  }
 
   const handleJoin = () => {
     handleClose();
@@ -57,9 +55,12 @@ const Header = ({ children }) => {
             </Link>
             
           </div>
-          <div className={classes.header__wrapper__right}>                  
-            
-              <Button onClick={handleJoin}>Join Class</Button>
+          <div className={classes.header__wrapper__right}> 
+          <div className= "searchBox">
+            <input type="text" placeholder="Search.." className="search" />
+
+          </div>
+          <Button onClick={handleJoin}>Join Class</Button>
               <Button onClick={handleCreate}>Create Class</Button>
               <Avatar
                 
@@ -75,7 +76,7 @@ const Header = ({ children }) => {
             
             <div>
               
-               <Button variant="outlined" color="orange" onClick={() => logoutUser()}>
+               <Button style = {{marginLeft: 8 }}variant="outlined" color="orange" onClick={() => logoutUser()}>
                 Logout
               </Button>
             </div>

@@ -34,8 +34,11 @@ const Announcment = ({ classData }) => {
         snap.docs.map((doc) => {
           var temp= doc.data();  
           if(temp.sender === loggedInMail && temp.text === text){
-            let imageRef = storage.refFromURL(temp.imageUrl);
-            imageRef.delete()
+            console.log(temp.imageUrl);
+            if(temp.imageUrl!==undefined){
+              let imageRef = storage.refFromURL(temp.imageUrl);
+              imageRef.delete()
+            }
             doc.ref.delete();
             console.log("Deleted!");
           }

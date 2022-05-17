@@ -1,17 +1,10 @@
-import {
-    Button,
-    Checkbox,
-    Dialog,
-    DialogActions,
-    DialogContent,
-  } from "@material-ui/core";
-  import React, { useState } from "react";
-  import { useLocalContext } from "../../context/context";
+
+  import React from "react";
+  //import { useLocalContext } from "../../context/context";
   import "./style.css";
   const Video = () => {
-    const { createClassDialog, setCreateClassDialog } = useLocalContext();
-    const [check, setChecked] = useState(false);
-    const [showForm, setShowForm] = useState(false);
+    
+    
     return (
         <div className="main" >
             <div className="main__wrapper"> 

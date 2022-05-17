@@ -15,7 +15,7 @@ const Form = () => {
   const addClass = (e) => {
     e.preventDefault();
     const id = uuidV4();
-
+    //Creating Firestore database for creating class
     db.collection("CreatedClasses")
       .doc(loggedInMail)
       .collection("classes")

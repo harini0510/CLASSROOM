@@ -1,4 +1,4 @@
-  import React, { useState } from "react";
+  import React from "react";
   import { ReactCalculator } from "simple-react-calculator";
   import "./style.css";
   const Calculator = () => {

@@ -10,4 +10,3 @@ export { default as Videos } from "./Videos/Videos";
 export { default as Calculator } from "./Calculator/Calculator";
 export { default as ConfirmDialog } from "./ConfirmDialog/ConfirmDialog";
 export { default as Page } from "./page/page";
-export { default as Test } from "./Test/Test";

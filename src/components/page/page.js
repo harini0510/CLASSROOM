@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { ReactCalculator } from "simple-react-calculator";
+import React from "react";
+//import { ReactCalculator } from "simple-react-calculator";
 import "./style.css";
 const page = () => {
   

@@ -15,9 +15,10 @@
   height: 15rem;
   position: relative;
   width: 100%;
+  height: 100%;
 }
 .main__bgImage {
-  background-image: url(https://gstatic.com/classroom/themes/img_backtoschool.jpg);
+  background-image: url(https://t3.ftcdn.net/jpg/01/57/33/98/360_F_157339827_syL1TxmVCCUHitdSx56LnVV3YnsJn2EW.jpg);
   background-size: cover;
   height: 100%;
   left: 0;
@@ -67,6 +68,7 @@
 }
 .main__wrapper2 {
   color: #fff;
+  
   flex-wrap: wrap;
   margin-top: 0.5rem;
 }

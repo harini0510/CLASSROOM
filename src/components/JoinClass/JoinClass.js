@@ -9,13 +9,14 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
+
 const JoinClass = () => {
   const {
     joinClassDialog,
     setJoinClassDialog,
     loggedInUser,
   } = useLocalContext();
-
+  //Setting useState() for classcode, email, error statement, joined class data and existing class 
   const [classCode, setClassCode] = useState("");
   const [email, setemail] = useState("");
   const [error, setError] = useState();
@@ -24,7 +25,8 @@ const JoinClass = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    //the user who joined the class data is stored in the firebase database collection 
+    
     db.collection("CreatedClasses")
       .doc(email)
       .collection("classes")

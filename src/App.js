@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Calculator, Drawer, JoinedClasses, Login, Main, Videos, Page, Test} from "./components";
+import { Calculator, Drawer, JoinedClasses, Login, Main, Videos, Page} from "./components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { IsUserRedirect, ProtectedRoute } from "./routes/Routes";
 import { useLocalContext } from "./context/context";
@@ -62,7 +62,7 @@ function App() {
         </Route>
         <Route exact path='/exam'>
             <Drawer />
-            <Test/>
+            
         </Route>
         <IsUserRedirect
           user={loggedInMail}
@@ -75,7 +75,9 @@ function App() {
 
         <ProtectedRoute user={loggedInMail} path="/" exact>
           <Drawer />
-          <div> <Page/></div> <br></br>
+          {createdClasses.length===0&&joinedClasses.length===0?
+            <div><div> <Page/></div> <br></br></div>:null
+          }
           <ol className="joined">
             {createdClasses.map((item) => (
               <JoinedClasses classData={item} />

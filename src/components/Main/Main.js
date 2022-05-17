@@ -1,11 +1,14 @@
-import { Avatar, Button, IconButton, TextField } from "@material-ui/core";
-import React, { useState } from "react";
+import { Avatar, Button, TextField } from "@material-ui/core";
+//import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import React, { useState, useEffect } from "react";
 import db, { storage } from "../../lib/firebase";
 import "./style.css";
 import firebase from "firebase";
 import { useLocalContext } from "../../context/context";
 import { Announcment } from "..";
-import { ReactCalculator } from "simple-react-calculator";
+//import { ReactCalculator } from "simple-react-calculator";
+import { EmailShareButton, LinkedinIcon, LinkedinShareButton } from "react-share";
+import { EmailIcon } from "react-share";
 
 const Main = ({ classData }) => {
   const { loggedInMail } = useLocalContext();
@@ -13,6 +16,17 @@ const Main = ({ classData }) => {
   const [inputValue, setInput] = useState("");
   const [image, setImage] = useState(null);
   const [result, setResult] = useState("");
+  const Fetchdata = async()=>{
+    const response=db.collection('CreatedClasses');
+    const data=await response.get();
+    data.docs.forEach(item=>{
+    console.log(item.data())
+    })
+    
+}
+  useEffect (() => {
+    Fetchdata()
+   },[]) 
   const clickHandler = (event) => {
     setResult(result.concat(event.target.value))
   }
@@ -30,6 +44,7 @@ const Main = ({ classData }) => {
     }
    };
    
+
 
   const handleUpload = () => {
     console.log(image,'abc')
@@ -86,8 +101,37 @@ const Main = ({ classData }) => {
               </div>
               <div className="main__wrapper2">
                 <em className="main__code">Class Code :</em>
-                <div className="main__id">{classData.id}</div>
-                <em className="main__code">Owner :</em>
+                <div className="main__id">{
+                  classData.id} 
+                  <div>
+                  { loggedInMail===classData.owner && <Button
+                    color= "secondary"               
+                    onClick={() =>{
+                      navigator.clipboard.writeText(classData.id===""?"":classData.id);
+                    }
+                  }>
+                    CLICK TO COPY THE CLASS CODE
+                  </Button> }
+                  </div>
+                  
+               {loggedInMail===classData.owner && 
+                  <div>
+                    <h3 style={{ color: 'red' }}>Click here to share</h3>
+                    <EmailShareButton url= {classData.id}
+                          quote={"Class code"}
+                          hashtag="#classCodeShare"
+                          className={classData.owner}>
+                      <EmailIcon size={20} />
+                    </EmailShareButton>
+                    <LinkedinShareButton url = {"https://www.linkedin.com/feed/"}>
+                      <LinkedinIcon size={20} />
+                    </LinkedinShareButton>
+                  </div> }
+                {
+                  loggedInMail===classData.owner && <Button color = "secondary" onClick={()=> window.open("https://calendar.google.com/calendar/u/0/r?tab=mc&pli=1", '_blank')}>Calender</Button>
+                }
+                </div>
+                <em className="main__code">Teacher: </em>
                 <div className="main__id">{classData.owner}</div>
               </div>
             </div>
